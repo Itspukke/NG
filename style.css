@@ -38,13 +38,18 @@ nav.scrolled .nav-toggle span{background:var(--navy)}
 .hero{
   position:relative;
   width:100%;
-  min-height:100svh;
-  height:auto;
+  min-height:100vh;
   overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
   background:var(--navy);
+
+  /* MOBILE FIXES */
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 }
 .hero-slides{position:absolute;inset:0;z-index:0}
 .hero-slide{transform:scale(1.08);transition:transform 8s}
@@ -846,58 +851,58 @@ body{
 
 
 
-/* =========================================
-   MOBILE SCROLL JUMP FIX
-========================================= */
+/* =====================================
+   FINAL MOBILE SCROLL FIX
+===================================== */
 
+html,
+body{
+  overflow-x:hidden;
+  width:100%;
+}
+
+body{
+  position:relative;
+}
+
+/* STOP MOBILE REPAINT BUGS */
+.hero,
+.hero-content,
+.hero-slides,
+.hero-slide,
+.services,
+section{
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+/* REMOVE MOBILE ANIMATION BUGS */
 @media (max-width:768px){
 
-  html,
-  body{
-    overflow-x:hidden;
-    width:100%;
-    position:relative;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  /* STOP HERO GPU JUMPING */
   .hero-slide{
+    animation:none !important;
+    transition:opacity .5s ease !important;
     transform:none !important;
-    transition:opacity .8s ease !important;
-    will-change:auto !important;
   }
 
   .hero-slide.active{
     transform:none !important;
   }
 
-  /* STOP REVEAL ANIMATION JUMPING */
   .reveal,
   .reveal-left,
   .reveal-right,
   .reveal-scale{
-    opacity:1 !important;
     transform:none !important;
     transition:none !important;
+    opacity:1 !important;
   }
 
-  /* FIX SECTION SHIFTING */
-  section,
-  .services,
-  .svc-panel,
-  .svc-panel-inner{
-    transform:none !important;
-  }
-
-  /* FIX IOS/ANDROID VIEWPORT BOUNCE */
-  .hero{
-    min-height:100dvh;
-    height:auto;
-  }
-
-  /* STOP RANDOM SIDE MOVEMENT */
-  *{
-    max-width:100%;
+  /* THIS IS THE IMPORTANT ONE */
+  body{
+    overflow-anchor:none;
   }
 
 }
