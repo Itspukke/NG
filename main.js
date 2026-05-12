@@ -20,7 +20,7 @@ function openMobNav() {
 /* ── Everything else runs after DOM is ready ── */
 document.addEventListener('DOMContentLoaded', function () {
   /* Always land on hero on load/refresh */
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  window.scrollTo(0,0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
 
@@ -120,7 +120,12 @@ document.addEventListener('DOMContentLoaded', function () {
     positionInk(tabs[idx]);
 
     /* Scroll active tab into view */
-    tabs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+if (window.innerWidth > 768) {
+  tabs[idx].scrollIntoView({
+    block: 'nearest',
+    inline: 'center'
+  });
+}
 
     /* Reposition after scroll settles to handle any drift */
     setTimeout(function() { positionInk(tabs[idx]); }, 350);
@@ -139,21 +144,52 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ── SCROLL REVEAL ── */
+/* ── SCROLL REVEAL ── */
+
+if (window.innerWidth > 768) {
+
   var revealObs = new IntersectionObserver(function(entries) {
+
     entries.forEach(function(entry) {
+
       if (entry.isIntersecting) {
+
         entry.target.classList.add('in-view');
+
         revealObs.unobserve(entry.target);
+
       }
+
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
 
   document.querySelectorAll(
     '.reveal, .reveal-left, .reveal-right, .reveal-scale, ' +
     '.pstep, .why-item, .value-item, .work-card, .stat, ' +
     '.contact-card, .info-card, .svc-item-card'
-  ).forEach(function(el) { revealObs.observe(el); });
+  ).forEach(function(el) {
 
+    revealObs.observe(el);
+
+  });
+
+} else {
+
+  /* MOBILE: no reveal animations */
+
+  document.querySelectorAll(
+    '.reveal, .reveal-left, .reveal-right, .reveal-scale'
+  ).forEach(function(el){
+
+    el.classList.add('in-view');
+
+  });
+
+}
   /* ── CONTACT FORM ── */
   var submitBtn = document.getElementById('submitBtn');
   if (submitBtn) {
@@ -190,7 +226,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!el) return;
     el.className = 'form-msg ' + type;
     el.textContent = text;
-    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (window.innerWidth > 768) {
+el.scrollIntoView({
+    block: 'nearest'
+  });
+}
   }
 
 }); /* end DOMContentLoaded */
