@@ -114,28 +114,25 @@ document.addEventListener('DOMContentLoaded', function () {
     ink.style.width = tab.offsetWidth + 'px';
   }
 
-  function activateTab(idx) {
-    tabs.forEach(function(t) { t.classList.remove('active'); });
-    panels.forEach(function(p) { p.classList.remove('active'); });
-    if (!tabs[idx] || !panels[idx]) return;
-    tabs[idx].classList.add('active');
-    panels[idx].classList.add('active');
+ function activateTab(idx) {
 
-    /* Position ink first using offsetLeft/offsetWidth (scroll-independent) */
-    positionInk(tabs[idx]);
-
-/* Scroll active tab into view ONLY on mobile */
-if (window.innerWidth <= 768) {
-  tabs[idx].scrollIntoView({
-    behavior: 'smooth',
-    block: 'nearest',
-    inline: 'center'
+  tabs.forEach(function(t) {
+    t.classList.remove('active');
   });
+
+  panels.forEach(function(p) {
+    p.classList.remove('active');
+  });
+
+  if (!tabs[idx] || !panels[idx]) return;
+
+  tabs[idx].classList.add('active');
+  panels[idx].classList.add('active');
+
+  positionInk(tabs[idx]);
 }
 
-    /* Reposition after scroll settles to handle any drift */
-    setTimeout(function() { positionInk(tabs[idx]); }, 350);
-  }
+
 
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
