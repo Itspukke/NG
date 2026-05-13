@@ -119,9 +119,10 @@ document.addEventListener('DOMContentLoaded', function () {
     /* Position ink first using offsetLeft/offsetWidth (scroll-independent) */
     positionInk(tabs[idx]);
 
-    /* Scroll active tab into view */
-if (window.innerWidth > 768) {
+/* Scroll active tab into view ONLY on mobile */
+if (window.innerWidth <= 768) {
   tabs[idx].scrollIntoView({
+    behavior: 'smooth',
     block: 'nearest',
     inline: 'center'
   });
