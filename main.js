@@ -86,13 +86,28 @@ if ('scrollRestoration' in history) {
     slides[cur].classList.add('active');
     if (dots[cur])   dots[cur].classList.add('active');
     if (strips[cur]) strips[cur].classList.add('si-active');
-    clearInterval(timer);
-    timer = setInterval(function() { goSlide((cur + 1) % slides.length); }, 4000);
+   if (window.innerWidth > 768) {
+
+  clearInterval(timer);
+
+  timer = setInterval(function() {
+    goSlide((cur + 1) % slides.length);
+  }, 4000);
+
+}
+
+}
   }
   window.goSlide = goSlide;
 
   if (slides.length) {
-    timer = setInterval(function() { goSlide((cur + 1) % slides.length); }, 4000);
+    if (window.innerWidth > 768) {
+
+  timer = setInterval(function() {
+    goSlide((cur + 1) % slides.length);
+  }, 4000);
+
+}
   }
   strips.forEach(function(s, i) {
     s.addEventListener('click', function() { goSlide(i); });
