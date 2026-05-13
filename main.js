@@ -7,14 +7,22 @@ var _mobNav = null;
 
 function closeMobNav() {
   var el = document.getElementById('mobileNav');
-  if (el) { el.classList.remove('open'); }
-  document.body.style.overflow = '';
+
+  if (el) {
+    el.classList.remove('open');
+  }
+
+  document.body.classList.remove('nav-open');
 }
 
 function openMobNav() {
   var el = document.getElementById('mobileNav');
-  if (el) { el.classList.add('open'); }
-  document.body.style.overflow = 'hidden';
+
+  if (el) {
+    el.classList.add('open');
+  }
+
+  document.body.classList.add('nav-open');
 }
 
 /* ── Everything else runs after DOM is ready ── */
