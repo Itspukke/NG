@@ -851,3 +851,16 @@ section{
   }
 
 }
+
+.services-tabs-wrap{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.services-tabs{
+    min-width: max-content;
+}
+
+html, body{
+    overflow-x: hidden;
+}
