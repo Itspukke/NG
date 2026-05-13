@@ -19,10 +19,10 @@ function openMobNav() {
 
 /* ── Everything else runs after DOM is ready ── */
 document.addEventListener('DOMContentLoaded', function () {
-  /* Always land on hero on load/refresh */
-  window.scrollTo(0,0);
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
+ /* Prevent browser restoring weird scroll positions on mobile */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 
   /* Wire hamburger button */
   var navToggle = document.getElementById('navToggle');
