@@ -27,10 +27,7 @@ function openMobNav() {
 
 /* ── Everything else runs after DOM is ready ── */
 document.addEventListener('DOMContentLoaded', function () {
- /* Prevent browser restoring weird scroll positions on mobile */
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
+
 
   /* Wire hamburger button */
   var navToggle = document.getElementById('navToggle');
