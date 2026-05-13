@@ -841,9 +841,8 @@ html{
 body{
   overflow-x:hidden;
   width:100%;
-  overscroll-behavior-y:none;
-  -webkit-overflow-scrolling:touch;
 }
+
 /* STOP MOBILE REPAINT BUGS */
 .hero,
 .hero-content,
