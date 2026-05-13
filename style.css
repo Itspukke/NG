@@ -718,7 +718,30 @@ footer{background:#060f1a;padding:2.5rem 5%}
     display:grid;grid-template-columns:1fr 1fr;
     gap:0.85rem;margin-bottom:2rem;
   }
-  .contact-card{border-radius:18px;padding:1.35rem 1rem;min-width:unset}
+  .contact-card{
+  border-radius:18px;
+  padding:1.35rem 1rem;
+  min-width:0;
+  width:100%;
+  overflow:hidden;
+}
+   .cc-val{
+  width:100%;
+  max-width:100%;
+  font-size:0.82rem;
+  line-height:1.5;
+  text-align:center;
+
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  white-space:normal;
+}
+
+.cc-val a{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  white-space:normal;
+}
    .contact-card a,
 .info-card a,
 .contact-card p,
