@@ -719,6 +719,17 @@ footer{background:#060f1a;padding:2.5rem 5%}
     gap:0.85rem;margin-bottom:2rem;
   }
   .contact-card{border-radius:18px;padding:1.35rem 1rem;min-width:unset}
+   .contact-card a,
+.info-card a,
+.contact-card p,
+.info-card p {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.contact-card,
+.info-card {
+  min-width: 0;
+}
   .cc-icon-wrap{width:52px;height:52px;margin-bottom:0.75rem}
   /* email value — plain text, no link styling */
   .cc-val{color:var(--white)!important;text-decoration:none!important}
