@@ -68,6 +68,10 @@ nav.scrolled .nav-toggle span{background:var(--navy)}
 
     display:block;
 }
+
+
+.hero{
+    min-height:100vh;
 }
 .hero-slides{position:absolute;inset:0;z-index:0}
 .hero-slide{
@@ -77,6 +81,7 @@ nav.scrolled .nav-toggle span{background:var(--navy)}
     height: 100%;
     opacity: 0;
     transition: opacity 1s ease;
+    overflow:hidden;
 }
 .hero-slide.active{
     opacity: 1;
