@@ -868,6 +868,10 @@ section{
 
 @media (max-width:768px){
 
+  .contact-card,
+  .info-card {
+    width: 100%;
+  }
   .hero-slides{
     transform:none !important;
     will-change:auto !important;
