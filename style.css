@@ -9,7 +9,7 @@
   --text-mid:#3d5a72;--text-light:#6b8fa8;--border:rgba(13,34,64,0.08);
 }
 html{
-  scroll-behavior:auto;
+  scroll-behavior:smooth;
   overflow-x:hidden;
   width:100%;
   scrollbar-gutter:stable;
